@@ -85,8 +85,11 @@ def _add_experience(resume_config, pdf):
 
 
 def _add_additional_experience(resume_config, pdf):
+    additional_experience = resume_config["experience"][3:]
+    if not additional_experience:
+        return
     pdf.section_header("Additional Work Experience")
-    for experience in resume_config["experience"][3:]:
+    for experience in additional_experience:
         pdf.basic_bold()
         cell_width = pdf.get_string_width(experience["company"])
         pdf.cell(cell_width, 5, experience["company"])
@@ -124,6 +127,8 @@ def _add_skills(resume_config, pdf):
 
 
 def _add_projects(resume_config, pdf):
+    if not resume_config.get("projects"):
+        return
     pdf.section_header("Projects")
     for project in resume_config["projects"]:
         pdf.basic_bold()
