@@ -1,0 +1,91 @@
+name: Andrew Violette
+email: andrew@andrewviolette.net
+phone: 847-863-4992
+website: www.andrewviolette.net
+blurb: Seasoned Programmer and Manager
+experience:
+  - company: Fast Radius
+    location: Chicago, IL
+    title: Director of Engineering
+    dates: April 2021 - Present
+    description: Responsible for architecture, development, and the teams that are building a new
+      product called Product Studio.
+  - company: divvyDOSE
+    location: Chicago, IL
+    title: Senior Engineering Manager
+    dates: Feburary 2019 - April 2021
+    description: Managed the "Bill and Fill" team, which was responsible for processing insurance
+        and credit card payments, invoicing, and the robotics involved in filling prescriptions. I
+        did everything from architecture, coaching, code-reviews, hiring, operational management,
+        and coding. My biggest project here was leading the effort to pull insurance processing
+        from a monolith to AWS cloud-native microservices (Lambda, Step Functions, DynamoDB, etc).
+  - company: Digital Fleet
+    location: Chicago, IL
+    title: Principal Engineer
+    dates: September 2018 - February 2019
+    description: I was involved in doing full stack development in C# for web services that were
+        built on the .NET platform. I spent an equal amount of time doing Android development in
+        Java for Digital Fleet's tablet application.
+  - company: Signal
+    location: Chicago, IL
+    title: Senior Development Manager
+    description: I was one of the original programmers at Signal (né BrightTag) where I was
+      involved in writing many of Signal's core services, which were primarily written in Java,
+      Ruby, and Python. I was manager of the Data Engineering Team for the last 2 years I was there.
+    dates: May 2010 - August 2018
+  - company: Rearden Commerce
+    location: Foster City, CA
+    title: Principal Engineer
+    dates: Jan 2008 - May 2010
+    description: ""
+  - company: Orbitz
+    location: Chicago, IL
+    title: Technical Manager
+    dates: Jun 2001 - Dec 2007
+    description: ""
+  - company: Accenture
+    location: Northbrook, IL
+    title: Senior Software Engineer
+    dates: July 1996 - Jun 2001
+  - company: Hewitt Associates
+    location: Lincolnshire, IL
+    title: Software Engineer
+    dates: Jun 1995 - Jun 1996
+    description: ""
+  - company: IBM
+    location: Boca Raton, FL
+    title: Software Engineer
+    dates: Jun 1994 - Jun 1995
+    description: ""
+  - company: NSA
+    location: Fort Meade, MD
+    title: Programmer
+    dates: Jun 1990 - August 1992
+    description: ""
+education:
+  - school: Depaul University
+    location: Chicago, IL
+    degree: M.S. Software Engineering
+    dates: September 1998 - August 2000
+  - school: Indiana University
+    location: Bloomington, IN
+    degree: B.S. Computer Science
+    dates: September 1989 - June 1994
+skills:
+  - Engineering Management
+  - Java
+  - Python
+  - AWS Cloud
+  - IAC
+  - Serverless
+
+projects:
+  - name: Chicago Farmer's Market Finder
+    url: https://www.chicagofarmersmarketfinder.com
+    description: A website that geolocates farmers' markets in the Chicago area.  Written in Python
+      with a Sapper/Svelte front-end.
+  - name: Chicago Food Truck Finder
+    url: https://www.chicagofoodtruckfinder.com
+    description: A website that geolocates food trucks on Chicago Streets.  I decomissioned this in
+      2020, but it had a 9 year run as Chicago's premier food truck site.  Including a mention in
+      Wired magazine and other publications.  Written in Java on a google appengine backend
