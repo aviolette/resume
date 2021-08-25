@@ -79,7 +79,7 @@ skills:
   - Serverless
 
 projects:
-  - name: Chicago Farmer's Market Finder
+  - name: Chicago Farmers' Market Finder
     url: https://www.chicagofarmersmarketfinder.com
     description: A website that geolocates farmers' markets in the Chicago area.  Written in Python
       with a Sapper/Svelte front-end.
