@@ -19,14 +19,20 @@ jobs:
       - name: Build Resume
         run: |
           python main.py
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 8
+          format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          tag_name: "tag-${{ steps.time.outputs.time }}"
+          release_name: Release ${{ steps.time.outputs.time }}
           body: |
             ${{ github.event.head_commit.message }}
           draft: false
