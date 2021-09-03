@@ -52,29 +52,29 @@ class ResumePDF(FPDF):
 def convert_resume():
     pdf = ResumePDF()
     with open("resume.yml", "r") as resume_file:
-        resume_config = yaml.safe_load(resume_file)
+        resume = yaml.safe_load(resume_file)
         pdf.add_page()
-        _add_header(resume_config, pdf)
-        _add_experience(resume_config, pdf)
-        _add_additional_experience(resume_config, pdf)
-        _add_education(resume_config, pdf)
-        _add_contact(resume_config, pdf)
-        _add_skills(resume_config, pdf)
-        _add_projects(resume_config, pdf)
+        _add_header(resume, pdf)
+        _add_experience(resume, pdf)
+        _add_additional_experience(resume, pdf)
+        _add_education(resume, pdf)
+        _add_contact(resume, pdf)
+        _add_skills(resume, pdf)
+        _add_projects(resume, pdf)
     pdf.output("AJVResume.pdf", "F")
 
 
-def _add_header(resume_config, pdf):
-    pdf.header_text(resume_config["name"])
+def _add_header(resume, pdf):
+    pdf.header_text(resume["name"])
     pdf.set_font("Helvetica", "", 9)
     pdf.set_y(31)
-    pdf.cell(125, 9, resume_config["blurb"], align="L")
+    pdf.cell(125, 9, resume["blurb"], align="L")
     pdf.ln()
 
 
-def _add_experience(resume_config, pdf):
+def _add_experience(resume, pdf):
     pdf.section_header("Experience")
-    for experience in resume_config["experience"][0:3]:
+    for experience in resume["experience"][0:3]:
         pdf.three_part(
             experience["company"], experience["location"], experience["title"]
         )
@@ -84,8 +84,8 @@ def _add_experience(resume_config, pdf):
         pdf.multi_cell(125, 5, experience["description"])
 
 
-def _add_additional_experience(resume_config, pdf):
-    additional_experience = resume_config["experience"][3:]
+def _add_additional_experience(resume, pdf):
+    additional_experience = resume["experience"][3:]
     if not additional_experience:
         return
     pdf.section_header("Additional Work Experience")
@@ -100,37 +100,37 @@ def _add_additional_experience(resume_config, pdf):
         pdf.ln()
 
 
-def _add_education(resume_config, pdf):
+def _add_education(resume, pdf):
     pdf.section_header("Education")
-    for education in resume_config["education"]:
+    for education in resume["education"]:
         pdf.three_part(education["school"], education["location"], education["degree"])
         pdf.set_y(pdf.get_y() + 7)
         pdf.lesser_text()
         pdf.text_cell(education["dates"])
 
 
-def _add_contact(resume_config, pdf):
+def _add_contact(resume, pdf):
     pdf.set_left_margin(150)
     pdf.set_y(15)
     pdf.basic_bold()
-    pdf.text_cell(resume_config["phone"], height=5)
-    pdf.text_cell(resume_config["email"], height=5)
-    pdf.text_cell(resume_config["website"], height=5)
+    pdf.text_cell(resume["phone"], height=5)
+    pdf.text_cell(resume["email"], height=5)
+    pdf.text_cell(resume["website"], height=5)
 
 
-def _add_skills(resume_config, pdf):
+def _add_skills(resume, pdf):
     pdf.set_y(45)
     pdf.section_header("Skills")
     pdf.lesser_text()
-    for skill in resume_config["skills"]:
+    for skill in resume["skills"]:
         pdf.text_cell(skill)
 
 
-def _add_projects(resume_config, pdf):
-    if not resume_config.get("projects"):
+def _add_projects(resume, pdf):
+    if not resume.get("projects"):
         return
     pdf.section_header("Projects")
-    for project in resume_config["projects"]:
+    for project in resume["projects"]:
         pdf.basic_bold()
         pdf.text_cell(project["name"])
         pdf.lesser_text()
