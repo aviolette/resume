@@ -8,8 +8,8 @@ experience:
     location: Pasadena, CA
     title: Staff Engineer
     dates: October 2021 - Present
-    description: Currently involved in scaling and observability efforts with the platform.  Most
-        work done in Kotlin applicaitons deployed to AWS.
+    description: Currently involved in scaling and observability efforts with the platform.
+        Application stack consists of Kotlin applications deployed to AWS.
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
