@@ -4,10 +4,16 @@ phone: 847-863-4992
 website: www.andrewviolette.net
 blurb: Seasoned Programmer and Manager
 experience:
+  - company: Deep6 AI
+    location: Pasadena, CA
+    title: Staff Engineer
+    dates: October 2021 - Present
+    description: Currently involved in scaling and observability efforts with the platform.  Most
+        work done in Kotlin applicaitons deployed to AWS.
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
-    dates: April 2021 - Present
+    dates: April 2021 - October 2021
     description: Responsible for the engineering teams, architecture, and development of the Product Studio product.
   - company: divvyDOSE
     location: Chicago, IL
@@ -36,7 +42,7 @@ experience:
     location: Foster City, CA
     title: Principal Engineer
     dates: Jan 2008 - May 2010
-    description: ""
+    description: Lead travel related projects.  Most programming done in J2EE technologies.
   - company: Orbitz
     location: Chicago, IL
     title: Technical Manager
