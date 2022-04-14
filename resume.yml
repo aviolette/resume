@@ -77,12 +77,12 @@ education:
     degree: B.S. Computer Science
     dates: September 1989 - June 1994
 skills:
-  - Engineering Management
+  - Kotlin
   - Java
   - Python
-  - AWS Cloud
-  - IAC
-  - Serverless
+  - AWS
+  - CDK/Serverless/Terraform
+  - Team Management
 
 projects:
   - name: Chicago Farmers' Market Finder
