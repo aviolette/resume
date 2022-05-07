@@ -56,17 +56,17 @@ experience:
     location: Lincolnshire, IL
     title: Software Engineer
     dates: Jun 1995 - Jun 1996
-    description: ""
+    description: "Developed Smalltalk applications that supported benefits administration"
   - company: IBM
     location: Boca Raton, FL
     title: Software Engineer
     dates: Jun 1994 - Jun 1995
-    description: ""
+    description: "Developed portions of the OS/2 operating system in C"
   - company: NSA
     location: Fort Meade, MD
     title: Programmer
     dates: Jun 1990 - August 1992
-    description: ""
+    description: "Nothing to see here"
 education:
   - school: Depaul University
     location: Chicago, IL
