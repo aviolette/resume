@@ -6,10 +6,10 @@ blurb: Seasoned Programmer and Manager
 experience:
   - company: Deep6 AI
     location: Pasadena, CA
-    title: Staff Engineer
+    title: Senior Engineering Manager
     dates: October 2021 - Present
-    description: Currently involved in scaling and observability efforts with the platform.
-        Application stack consists of Kotlin applications deployed to AWS.
+    description: Manage a cross-functional application team.  This also includes, architecture, development, coding (in Typescript and Kotlin), 
+        and developing deployment solutions.
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
@@ -80,6 +80,7 @@ skills:
   - Kotlin
   - Java
   - Python
+  - Typescript
   - AWS
   - CDK/Serverless/Terraform
   - Team Management
