@@ -23,8 +23,7 @@ experience:
     description: Managed the "Bill and Fill" team, which was responsible for processing insurance
         and credit card payments, invoicing, and the robotics involved in filling prescriptions. I
         did everything from architecture, coaching, code-reviews, hiring, operational management,
-        and coding. My biggest project here was leading the effort to pull insurance processing
-        from a monolith to AWS cloud-native microservices (Lambda, Step Functions, DynamoDB, etc).
+        and coding. 
   - company: Digital Fleet
     location: Chicago, IL
     title: Principal Engineer
