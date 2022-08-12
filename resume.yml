@@ -8,8 +8,7 @@ experience:
     location: Pasadena, CA
     title: Senior Engineering Manager
     dates: October 2021 - Present
-    description: Manage a cross-functional application team.  This also includes, architecture, development, coding (in Typescript and Kotlin), 
-        and developing deployment solutions.
+    description: Managed a cross-functional application team that builds services deployed in AWS.  Responsibilities include: software architecture, coaching, code-reviews, coding (in Typescript and Kotlin), and managing deployment pipelines (using CDK and some terraform). 
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
