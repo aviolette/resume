@@ -116,6 +116,7 @@ def _add_contact(resume, pdf):
     pdf.text_cell(resume["phone"], height=5)
     pdf.text_cell(resume["email"], height=5)
     pdf.text_cell(resume["website"], height=5)
+    pdf.text_cell(resume["address"], height=5)
 
 
 def _add_skills(resume, pdf):
