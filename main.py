@@ -1,10 +1,97 @@
 import yaml
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Pt, RGBColor
 from fpdf import FPDF
 
 
+class ResumeDoc:
+    def __init__(self, file_root: str):
+        self.file_root = file_root
+        self.document = Document()
+
+        font = self.document.styles['Normal'].font
+        font.name = "Helvetica"
+        font.size = Pt(10)
+
+        font = self.document.styles['Title'].font
+        font.name = "Helvetica"
+        font.size = Pt(36)
+
+        font = self.document.styles['Body Text'].font
+        font.name = "Helvetica"
+        font.size = Pt(9)
+        font.color.rgb = RGBColor(100, 100, 100)
+
+        font = self.document.styles['Body Text 2'].font
+        font.name = "Helvetica"
+        font.size = Pt(14)
+        self.document.styles['Body Text 2'].paragraph_format.line_spacing = 1
+
+        style = self.document.styles['Body Text 3']
+        font = style.font
+        font.name = "Helvetica"
+        font.size = Pt(10)
+        style.paragraph_format.line_spacing = 1
+        style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    def add_header(self, resume):
+        self.document.add_heading(resume["name"],
+                                  0).paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        # self.document.add_paragraph(resume["blurb"])
+
+    def add_experience(self, resume):
+        self.section_header("Experience")
+        for experience in resume["experience"]:
+            self.three_part(
+                experience["company"], experience["location"], experience["title"]
+            )
+            self.document.add_paragraph(experience["dates"]).style = self.document.styles[
+                'Body Text']
+            if "description" in experience:
+                self.document.add_paragraph(experience["description"])
+
+    def add_education(self, resume):
+        self.section_header("Education")
+        for education in resume["education"]:
+            self.three_part(education["school"], education["location"], education["degree"])
+            self.document.add_paragraph(education["dates"])
+
+    def add_contact(self, resume):
+
+        self.document.add_paragraph(
+            f"{resume['email']} * {resume['phone']} * {resume['address']}").style = \
+        self.document.styles['Body Text 3']
+
+    def add_skills(self, resume):
+        self.document.add_heading("Skills")
+        self.document.add_paragraph(" • ".join(resume["skills"]))
+
+
+    def write_file(self, resume):
+        self.add_header(resume)
+        self.add_contact(resume)
+        self.add_skills(resume)
+        self.add_experience(resume)
+        self.add_education(resume)
+        self.document.save(f"{self.file_root}.docx")
+
+    def section_header(self, name):
+        self.document.add_heading(name, 1)
+
+    def three_part(self, param1, param2, param3):
+        p = self.document.add_paragraph("")
+        p.style = self.document.styles['Body Text 2']
+        run = p.add_run(param1)
+        run.bold = True
+        p.add_run(f", {param2}, ")
+        p.add_run(param3).italic = True
+
+
 class ResumePDF(FPDF):
-    def __init__(self):
+    def __init__(self, file_root: str):
         super().__init__(format="letter")
+        self.file_root = file_root
 
     def basic_bold(self):
         self.set_text_color(0, 0, 0)
@@ -48,96 +135,92 @@ class ResumePDF(FPDF):
         if lf:
             self.ln()
 
+    def add_header(self, resume):
+        self.header_text(resume["name"])
+        self.set_font("Helvetica", "", 9)
+        self.set_y(31)
+        self.cell(125, 9, resume["blurb"], align="L")
+        self.ln()
 
-def convert_resume():
-    pdf = ResumePDF()
+    def add_experience(self, resume):
+        self.section_header("Experience")
+        for experience in resume["experience"][0:3]:
+            self.three_part(
+                experience["company"], experience["location"], experience["title"]
+            )
+            self.set_y(self.get_y() + 7)
+            self.lesser_text()
+            self.text_cell(experience["dates"])
+            self.multi_cell(125, 5, experience["description"])
+
+    def add_education(self, resume):
+        self.section_header("Education")
+        for education in resume["education"]:
+            self.three_part(education["school"], education["location"], education["degree"])
+            self.set_y(self.get_y() + 7)
+            self.lesser_text()
+            self.text_cell(education["dates"])
+
+    def add_additional_experience(self, resume):
+        additional_experience = resume["experience"][3:]
+        if not additional_experience:
+            return
+        self.section_header("Additional Work Experience")
+        for experience in additional_experience:
+            self.basic_bold()
+            cell_width = self.get_string_width(experience["company"])
+            self.cell(cell_width, 5, experience["company"])
+            self.lesser_text()
+            right = f" - {experience['location']} - {experience['title']} - {experience['dates']}"
+            cell_width = self.get_string_width(right)
+            self.cell(cell_width, 5, right)
+            self.ln()
+
+    def add_contact(self, resume):
+        self.set_left_margin(150)
+        self.set_y(15)
+        self.basic_bold()
+        self.text_cell(resume["phone"], height=5)
+        self.text_cell(resume["email"], height=5)
+        self.text_cell(resume["website"], height=5)
+        self.text_cell(resume["address"], height=5)
+
+    def add_skills(self, resume):
+        self.set_y(45)
+        self.section_header("Skills")
+        self.lesser_text()
+        for skill in resume["skills"]:
+            self.text_cell(skill)
+
+    def add_projects(self, resume):
+        if not resume.get("projects"):
+            return
+        self.section_header("Projects")
+        for project in resume["projects"]:
+            self.basic_bold()
+            self.text_cell(project["name"])
+            self.lesser_text()
+            self.multi_cell(50, 5, project["description"], align="L")
+            self.ln()
+
+    def write_file(self, resume):
+        self.add_page()
+        self.add_header(resume)
+        self.add_experience(resume)
+        self.add_additional_experience(resume)
+        self.add_education(resume)
+        self.add_contact(resume)
+        self.add_skills(resume)
+        self.add_projects(resume)
+        self.output(f"{self.file_root}.pdf")
+
+
+def write_resume(document):
     with open("resume.yml", "r") as resume_file:
         resume = yaml.safe_load(resume_file)
-        pdf.add_page()
-        _add_header(resume, pdf)
-        _add_experience(resume, pdf)
-        _add_additional_experience(resume, pdf)
-        _add_education(resume, pdf)
-        _add_contact(resume, pdf)
-        _add_skills(resume, pdf)
-        _add_projects(resume, pdf)
-    pdf.output("AJVResume.pdf", "F")
-
-
-def _add_header(resume, pdf):
-    pdf.header_text(resume["name"])
-    pdf.set_font("Helvetica", "", 9)
-    pdf.set_y(31)
-    pdf.cell(125, 9, resume["blurb"], align="L")
-    pdf.ln()
-
-
-def _add_experience(resume, pdf):
-    pdf.section_header("Experience")
-    for experience in resume["experience"][0:3]:
-        pdf.three_part(
-            experience["company"], experience["location"], experience["title"]
-        )
-        pdf.set_y(pdf.get_y() + 7)
-        pdf.lesser_text()
-        pdf.text_cell(experience["dates"])
-        pdf.multi_cell(125, 5, experience["description"])
-
-
-def _add_additional_experience(resume, pdf):
-    additional_experience = resume["experience"][3:]
-    if not additional_experience:
-        return
-    pdf.section_header("Additional Work Experience")
-    for experience in additional_experience:
-        pdf.basic_bold()
-        cell_width = pdf.get_string_width(experience["company"])
-        pdf.cell(cell_width, 5, experience["company"])
-        pdf.lesser_text()
-        right = f" - {experience['location']} - {experience['title']} - {experience['dates']}"
-        cell_width = pdf.get_string_width(right)
-        pdf.cell(cell_width, 5, right)
-        pdf.ln()
-
-
-def _add_education(resume, pdf):
-    pdf.section_header("Education")
-    for education in resume["education"]:
-        pdf.three_part(education["school"], education["location"], education["degree"])
-        pdf.set_y(pdf.get_y() + 7)
-        pdf.lesser_text()
-        pdf.text_cell(education["dates"])
-
-
-def _add_contact(resume, pdf):
-    pdf.set_left_margin(150)
-    pdf.set_y(15)
-    pdf.basic_bold()
-    pdf.text_cell(resume["phone"], height=5)
-    pdf.text_cell(resume["email"], height=5)
-    pdf.text_cell(resume["website"], height=5)
-    pdf.text_cell(resume["address"], height=5)
-
-
-def _add_skills(resume, pdf):
-    pdf.set_y(45)
-    pdf.section_header("Skills")
-    pdf.lesser_text()
-    for skill in resume["skills"]:
-        pdf.text_cell(skill)
-
-
-def _add_projects(resume, pdf):
-    if not resume.get("projects"):
-        return
-    pdf.section_header("Projects")
-    for project in resume["projects"]:
-        pdf.basic_bold()
-        pdf.text_cell(project["name"])
-        pdf.lesser_text()
-        pdf.multi_cell(50, 5, project["description"], align="L")
-        pdf.ln()
+        document.write_file(resume)
 
 
 if __name__ == "__main__":
-    convert_resume()
+    write_resume(ResumePDF("AJVResume"))
+    write_resume(ResumeDoc("AJVResume"))
