@@ -4,6 +4,9 @@ phone: 847-863-4992
 address: Nashville, TN
 website: www.andrewviolette.net
 blurb: Seasoned Programmer and Manager
+extended_blurb:
+  I am an experienced programmer with over 30 years of experience in programming and engineering 
+  management.  My main interests lie in architecting and deploying cloud-based distributed systems.
 experience:
   - company: Deep6 AI
     location: Pasadena, CA
@@ -48,11 +51,17 @@ experience:
     location: Chicago, IL
     title: Technical Manager
     dates: Jun 2001 - Dec 2007
-    description: ""
+    description: From 2001-2004, I was a Senior Engineer assigned to various travel verticals within Orbitz.
+      These were primarily Java projects.  From 2004-2007 I was the engineering manager in charge
+      of the Northwest Airlines Reservation site (which was a white-labeled version of Orbitz).  
+      For the latter half of 2007, I was a tech lead on the UI Team.
   - company: Accenture
     location: Northbrook, IL
     title: Senior Software Engineer
     dates: July 1996 - Jun 2001
+    description: For the first couple of years I was working on a UI generation tool that was 
+      leveraged by consultants in the field.  This was primarily written in C++.  The last few years
+      I was involved in a documentation generation tool that was primarily written in Java.
   - company: Hewitt Associates
     location: Lincolnshire, IL
     title: Software Engineer
