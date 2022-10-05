@@ -4,9 +4,12 @@ phone: 847-863-4992
 address: Nashville, TN
 website: www.andrewviolette.net
 blurb: Seasoned Programmer and Manager
-extended_blurb:
-  I am an experienced programmer with over 30 years of experience in programming and engineering 
-  management.  My main interests lie in architecting and deploying cloud-based distributed systems.
+extended_blurb: >
+  I am an experienced programmer with over 30 years of experience in software engineering and 
+  management.  My strengths are building distributed systems in Java and Python.  I have a swath of 
+  experience in various database systems (DynamoDB, postgres, MongoDB, SQL Server, etc) and eventing 
+  and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
+  front-end (primarily React and Svelte) and mobile frameworks as well.
 experience:
   - company: Deep6 AI
     location: Pasadena, CA
@@ -23,7 +26,7 @@ experience:
   - company: divvyDOSE
     location: Chicago, IL
     title: Senior Engineering Manager
-    dates: Feburary 2019 - April 2021
+    dates: February 2019 - April 2021
     description: Managed the "Bill and Fill" team, which was responsible for processing insurance
         and credit card payments, invoicing, and the robotics involved in filling prescriptions. I
         did everything from architecture, coaching, code-reviews, hiring, operational management,
@@ -78,7 +81,7 @@ experience:
     dates: Jun 1990 - August 1992
     description: "Nothing to see here"
 education:
-  - school: Depaul University
+  - school: DePaul University
     location: Chicago, IL
     degree: M.S. Software Engineering
     dates: September 1998 - August 2000
@@ -92,7 +95,9 @@ skills:
   - Python
   - Typescript
   - AWS
-  - CDK/Serverless/Terraform
+  - CDK
+  - Terraform
+  - Serverless
   - Team Management
 
 projects:
