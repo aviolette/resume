@@ -18,7 +18,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build Resume
         run: |
-          python main.py
+          python main.py AJVResume
       - name: Get Time
         id: time
         uses: nanzm/get-time-action@v1.1
@@ -37,12 +37,6 @@ jobs:
             ${{ github.event.head_commit.message }}
           draft: false
           prerelease: false
-#      - name: Upload to release
-#        uses: JasonEtco/upload-to-release@master
-#        with:
-#          args: AJVResume.pdf application/pdf
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
