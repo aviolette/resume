@@ -69,7 +69,9 @@ class ResumePDF(FPDF):
     def add_education(self, resume):
         self.section_header("Education")
         for education in resume["education"]:
-            self.three_part(education["school"], education["location"], education["degree"])
+            self.three_part(
+                education["school"], education["location"], education["degree"]
+            )
             self.set_y(self.get_y() + 7)
             self.lesser_text()
             self.text_cell(education["dates"])
