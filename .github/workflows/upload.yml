@@ -16,21 +16,21 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Build Resume
-        run: |
-          python main.py AJVResume
-      - name: Get Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 8
-          format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Get Date
         id: date
         uses: nanzm/get-time-action@v1.1
         with:
           timeZone: 8
           format: 'YYYY-MM-DD'
+      - name: Build Resume
+        run: |
+          python main.py AJVResume-${{ steps.time.outputs.date }}
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 8
+          format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
