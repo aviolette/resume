@@ -15,8 +15,8 @@ experience:
     location: Pasadena, CA
     title: Senior Staff Engineer
     dates: October 2021 - January 2023
-    description: Architected solutions for clinical-trial SaaS product deployed in AWS.  
-        Responsibilities include software architecture, coaching, code-reviews, coding (in Typescript, Python, 
+    description: Architected solutions for clinical trial SaaS product that was deployed in AWS.  
+        Responsibilities included software architecture, coaching, code-reviews, coding (in Typescript, Python, 
         and Kotlin), and managing deployment pipelines (using CDK and some terraform). 
   - company: Fast Radius
     location: Chicago, IL
