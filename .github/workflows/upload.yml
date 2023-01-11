@@ -25,6 +25,12 @@ jobs:
         with:
           timeZone: 8
           format: 'YYYY-MM-DD-HH-mm-ss'
+      - name: Get Date
+        id: date
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 8
+          format: 'YYYY-MM-DD'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -44,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./AJVResume.pdf
-          asset_name: AJVResume.pdf
+          asset_path: "./AJVResume-${{ steps.time.outputs.date }}.pdf"
+          asset_name: "AJVResume-${{ steps.time.outputs.date }}.pdf"
           asset_content_type: application/pdf
