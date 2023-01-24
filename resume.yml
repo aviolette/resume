@@ -11,6 +11,16 @@ extended_blurb: >
   and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
   front-end (primarily React and Svelte) and mobile frameworks as well.
 experience:
+  - company: SpiralDot Health
+    location: Los Angeles, CA
+    title: Founding Engineer
+    dates: January 2023 - Present
+    description: 
+  - company: Honor Education
+    location: San Francisco, CA
+    title: Consultant
+    dates: January 2023 - Present
+    description:
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
