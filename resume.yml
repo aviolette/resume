@@ -18,9 +18,11 @@ experience:
     description: ""
   - company: Honor Education
     location: San Francisco, CA
-    title: Consultant
+    title: Senior Manager/Principal Engineer
     dates: January 2023 - Present
-    description: ""
+    description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
+        Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
+        observability and monitoring framework. 
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
