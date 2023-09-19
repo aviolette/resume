@@ -9,7 +9,7 @@ extended_blurb: >
   management.  My strengths are building distributed systems in Java and Python.  I have a swath of 
   experience in various database systems (DynamoDB, postgres, MongoDB, SQL Server, etc) and eventing 
   and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
-  front-end (primarily React and Svelte) and mobile frameworks as well.
+  front-end (primarily React and Svelte).
 experience:
   - company: SpiralDot Health
     location: Los Angeles, CA
