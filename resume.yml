@@ -12,18 +12,19 @@ extended_blurb: >
   front-end (primarily React and Svelte).
 experience:
   - company: Honor Education
-    location: San Francisco, CA
+    location: San Francisco, CA (remote)
     title: Principal Engineer
     dates: January 2023 - Present
     description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
         Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
         observability and monitoring framework. 
   - company: SpiralDot Health
-    location: Los Angeles, CA
+    location: Los Angeles, CA (remote)
     title: Founding Engineer
     dates: January 2023 - Present
     description: Currently acting as an advisor for this stealth startup.
   - company: Nashville Food Project
+    location: Nashville, TN
     title: Volunteer
     dates: March 2022 - Present
     description: The Nashville Food Project is a non-profit organization which provides meals for the community with 
