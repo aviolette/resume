@@ -11,11 +11,6 @@ extended_blurb: >
   and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
   front-end (primarily React and Svelte).
 experience:
-  - company: SpiralDot Health
-    location: Los Angeles, CA
-    title: Founding Engineer
-    dates: January 2023 - Present
-    description: ""
   - company: Honor Education
     location: San Francisco, CA
     title: Principal Engineer
@@ -23,6 +18,16 @@ experience:
     description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
         Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
         observability and monitoring framework. 
+  - company: SpiralDot Health
+    location: Los Angeles, CA
+    title: Founding Engineer
+    dates: January 2023 - Present
+    description: Currently acting as an advisor for this stealth startup.
+  - company: Nashville Food Project
+    title: Volunteer
+    dates: March 2022 - Present
+    description: The Nashville Food Project is a non-profit organization which provides meals for the community with 
+        food that is recovered or grown locally at their farms.  I volunteer once a month doing meal prep.
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
