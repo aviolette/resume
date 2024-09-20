@@ -11,18 +11,18 @@ extended_blurb: >
   and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
   front-end (primarily React and Svelte).
 experience:
-  - company: Honor Education
-    location: San Francisco, CA (remote)
-    title: Engineering Manager
-    dates: January 2023 - Present
-    description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
-        Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
-        observability and monitoring framework. 
   - company: SpiralDot Health
     location: Los Angeles, CA (remote)
     title: Founding Engineer
     dates: January 2023 - Present
     description: Currently acting as an advisor for this stealth startup.
+  - company: Honor Education
+    location: San Francisco, CA (remote)
+    title: Engineering Manager
+    dates: January 2023 - September 2024
+    description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
+        Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
+        observability and monitoring framework. 
   - company: Nashville Food Project
     location: Nashville, TN
     title: Volunteer
