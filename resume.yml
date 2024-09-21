@@ -20,22 +20,17 @@ experience:
     location: San Francisco, CA (remote)
     title: Engineering Manager
     dates: January 2023 - September 2024
-    description: Platform architect and team lead.  Architected and built industry-standard customer integration.  
-        Built out integration test framework.   Researched AI-based learning solutions.  Developed and implemented 
-        observability and monitoring framework. 
+    description: Platform architect and team lead for a Learning Management System (LMS).  Architected and built industry-standard customer integrations using AWS technologies (Lambda, DynamoDB, Cognito, API Gateway). Researched AI-based learning solutions. Developed and implemented observability and monitoring framework (primarily using DataDog). Primary development technologies were Java, Python, and AWS.
   - company: Nashville Food Project
     location: Nashville, TN
     title: Volunteer
     dates: March 2022 - Present
-    description: The Nashville Food Project is a non-profit organization which provides meals for the community with 
-        food that is recovered or grown locally at their farms.  I volunteer once a month doing meal prep.
+    description: The Nashville Food Project is a non-profit organization which provides meals for the community with food that is recovered or grown locally at their farms.  I volunteer once a month doing meal prep.
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
     dates: October 2021 - January 2023
-    description: Architected solutions for a clinical trial SaaS product that was deployed in AWS.  
-        Responsibilities included software architecture, coaching, code-reviews, coding (in Typescript, Python, 
-        and Kotlin), and managing deployment pipelines (using CDK and some terraform). 
+    description: Architected solutions for a clinical trial SaaS product that was deployed in AWS.  Responsibilities included software architecture, coaching, code-reviews, coding (in Typescript, Python, and Kotlin), and managing deployment pipelines (using CDK and some terraform).
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
@@ -45,44 +40,32 @@ experience:
     location: Chicago, IL
     title: Senior Engineering Manager
     dates: February 2019 - April 2021
-    description: Managed the "Bill and Fill" team, which was responsible for processing insurance
-        and credit card payments, invoicing, and the robotics involved in filling prescriptions. I
-        did everything from architecture, coaching, code-reviews, hiring, operational management,
-        and coding. 
+    description: Managed the "Bill and Fill" team, which was responsible for processing insurance and credit card payments, invoicing, and the robotics involved in filling prescriptions. I did everything from architecture, coaching, code-reviews, hiring, operational management, and coding.  Code was written in python on AWS serverless technologies.
   - company: Digital Fleet
     location: Chicago, IL
     title: Principal Engineer
     dates: September 2018 - February 2019
-    description: I was involved in doing full stack development in C# for web services that were
-        built on the .NET platform. I spent an equal amount of time doing Android development in
-        Java for Digital Fleet's tablet application.
+    description: DigitalFleet provides real-time logistics for the ready-mix concrete industry. I was involved in doing full stack development in C# for web services that were built on the .NET platform. I spent an equal amount of time doing Android development in Java for Digital Fleet's tablet application.
   - company: Signal
     location: Chicago, IL
     title: Senior Development Manager
-    description: I was one of the original programmers at Signal (né BrightTag) where I was
-      involved in writing many of Signal's core services, which were primarily written in Java,
-      Ruby, and Python. I was manager of the Data Engineering Team for the last 2 years I was there.
+    description: One of the original programmers at Signal (né BrightTag) where I was involved in writing many of Signal's core services, which were primarily written in Java, Ruby, and Python. I was manager of the Data Engineering Team for the last 2 years I was there.
     dates: May 2010 - August 2018
   - company: Rearden Commerce
     location: Foster City, CA
     title: Principal Engineer
     dates: Jan 2008 - May 2010
-    description: Lead travel related projects.  Most programming done in J2EE technologies.
+    description: Lead travel related projects.  Most programming done in Java/J2EE technologies.
   - company: Orbitz
     location: Chicago, IL
     title: Technical Manager
     dates: Jun 2001 - Dec 2007
-    description: From 2001-2004, I was a Senior Engineer assigned to various travel verticals within Orbitz.
-      These were primarily Java projects.  From 2004-2007 I was the engineering manager in charge
-      of the Northwest Airlines Reservation site (which was a white-labeled version of Orbitz).  
-      For the latter half of 2007, I was a tech lead on the UI Team.
+    description: From 2001-2004, I was a Senior Engineer assigned to various travel verticals within Orbitz (now part of Expedia). These were primarily Java projects.  From 2004-2007 I was the engineering manager in charge of the Northwest Airlines Reservation site (which was a white-labeled version of Orbitz).  For the latter half of 2007, I was a tech lead on the UI Team.
   - company: Accenture
     location: Northbrook, IL
     title: Senior Software Engineer
     dates: July 1996 - Jun 2001
-    description: For the first couple of years I was working on a UI generation tool that was 
-      leveraged by consultants in the field.  This was primarily written in C++.  The last few years
-      I was involved in a documentation generation tool that was primarily written in Java.
+    description: For the first couple of years I was working on a UI generation tool that was leveraged by consultants in the field.  This was primarily written in C++.  The last few years I was involved in a documentation generation tool that was primarily written in Java.
   - company: Hewitt Associates
     location: Lincolnshire, IL
     title: Software Engineer
