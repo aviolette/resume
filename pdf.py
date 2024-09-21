@@ -1,5 +1,6 @@
 from fpdf import FPDF
 
+EXPERIENCE_PANEL = 2
 
 class ResumePDF(FPDF):
     def __init__(self, file_root: str):
@@ -57,7 +58,7 @@ class ResumePDF(FPDF):
 
     def add_experience(self, resume):
         self.section_header("Experience")
-        for experience in resume["experience"][0:3]:
+        for experience in resume["experience"][0:EXPERIENCE_PANEL]:
             self.three_part(
                 experience["company"], experience["location"], experience["title"]
             )
@@ -77,7 +78,7 @@ class ResumePDF(FPDF):
             self.text_cell(education["dates"])
 
     def add_additional_experience(self, resume):
-        additional_experience = resume["experience"][3:]
+        additional_experience = resume["experience"][EXPERIENCE_PANEL:]
         if not additional_experience:
             return
         self.section_header("Additional Work Experience")
