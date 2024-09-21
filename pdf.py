@@ -2,6 +2,7 @@ from fpdf import FPDF
 
 EXPERIENCE_PANEL = 2
 
+
 class ResumePDF(FPDF):
     def __init__(self, file_root: str):
         super().__init__(format="letter")

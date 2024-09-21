@@ -3,14 +3,12 @@ import sys
 import yaml
 
 from pdf import ResumePDF
-from word import ResumeDoc
 
 
 def write_resumes(file_root):
     with open("resume.yml", "r") as resume_file:
         resume = yaml.safe_load(resume_file)
         ResumePDF(file_root).write_file(resume)
-        ResumeDoc(file_root).write_file(resume)
 
 
 if __name__ == "__main__":

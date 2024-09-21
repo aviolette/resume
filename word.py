@@ -44,9 +44,9 @@ class ResumeDoc:
         style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
     def add_header(self, resume):
-        self.document.add_heading(
-            resume["name"], 0
-        ).paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        self.document.add_heading(resume["name"], 0).paragraph_format.alignment = (
+            WD_ALIGN_PARAGRAPH.CENTER
+        )
         # self.document.add_paragraph(resume["blurb"])
 
     def add_experience(self, resume):
@@ -55,9 +55,9 @@ class ResumeDoc:
             self.three_part(
                 experience["company"], experience["location"], experience["title"]
             )
-            self.document.add_paragraph(
-                experience["dates"]
-            ).style = self.document.styles["Body Text"]
+            self.document.add_paragraph(experience["dates"]).style = (
+                self.document.styles["Body Text"]
+            )
             if "description" in experience:
                 self.document.add_paragraph(experience["description"])
 
@@ -67,9 +67,9 @@ class ResumeDoc:
             self.three_part(
                 education["school"], education["location"], education["degree"]
             )
-            self.document.add_paragraph(
-                education["dates"]
-            ).style = self.document.styles["Body Text"]
+            self.document.add_paragraph(education["dates"]).style = (
+                self.document.styles["Body Text"]
+            )
 
     def add_contact(self, resume):
         self.document.add_paragraph(
