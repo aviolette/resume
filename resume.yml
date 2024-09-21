@@ -20,7 +20,7 @@ experience:
     location: San Francisco, CA (remote)
     title: Engineering Manager
     dates: January 2023 - September 2024
-    description: Platform architect and team lead for a Learning Management System (LMS).  Architected and built industry-standard customer integrations using AWS technologies (Lambda, DynamoDB, Cognito, API Gateway). Researched AI-based learning solutions. Developed and implemented observability and monitoring framework (primarily using DataDog). Primary development technologies were Java, Python, and AWS.
+    description: Platform architect and team lead for a Learning Management System (LMS).  Architected and built customer integrations using AWS technologies (Lambda, DynamoDB, Cognito, API Gateway). Researched AI-based learning solutions. Developed and implemented observability and monitoring framework (primarily using DataDog). Primary development technologies were Java, Python, and AWS.
   - company: Nashville Food Project
     location: Nashville, TN
     title: Volunteer
