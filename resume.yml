@@ -98,8 +98,8 @@ skills:
   - AWS
   - CDK
   - Terraform
-  - Serverless
-  - Team Management
+  - FHIR
+  - React
 
 projects:
   - name: Chicago Farmers' Market Finder
