@@ -1,5 +1,6 @@
 venv
 .idea
 resume.pdf
+__pycache__
 
 AJVResume.pdf
