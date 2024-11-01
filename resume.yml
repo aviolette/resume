@@ -16,16 +16,16 @@ experience:
     title: Founding Engineer
     dates: January 2023 - Present
     description: Founding engineer responsible for architecture and implementation of AI-based decision support software for oncology.  In this capacity, I use the AWS cloud stack, cutting edge LLM technology, and industry-standard healthcare interchange formats such as HL7 FHIR.
+  - company: Nashville Food Project
+    location: Nashville, TN
+    title: Volunteer
+    dates: March 2022 - September 2024
+    description: The Nashville Food Project is a non-profit organization which provides meals for the community with food that is recovered or grown locally at their farms.  I volunteered once a month doing meal prep.
   - company: Honor Education
     location: San Francisco, CA (remote)
     title: Engineering Manager
     dates: January 2023 - September 2024
     description: Platform architect and team lead for a Learning Management System (LMS).  Architected and built customer integrations using AWS technologies (Lambda, DynamoDB, Cognito, API Gateway). Researched AI-based learning solutions. Developed and implemented observability and monitoring framework (primarily using DataDog). Primary development technologies were Java, Python, and AWS.
-  - company: Nashville Food Project
-    location: Nashville, TN
-    title: Volunteer
-    dates: March 2022 - Present
-    description: The Nashville Food Project is a non-profit organization which provides meals for the community with food that is recovered or grown locally at their farms.  I volunteer once a month doing meal prep.
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
