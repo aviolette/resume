@@ -7,9 +7,8 @@ blurb: Seasoned Programmer and Manager
 extended_blurb: >
   I am an experienced programmer with over 30 years of experience in software engineering and 
   management.  My strengths are building distributed systems in Java and Python.  I have a swath of 
-  experience in various database systems (DynamoDB, postgres, MongoDB, SQL Server, etc) and eventing 
-  and streaming services (EventBridge, SQS, Kenesis, Kafka).  I have a decent familiarity with 
-  front-end (primarily React and Svelte).
+  experience in various database systems and eventing and streaming services.  I have a decent familiarity with 
+  front-end, primarily using React.
 experience:
   - company: SpiralDot Health
     location: Los Angeles, CA (remote)
