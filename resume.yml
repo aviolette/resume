@@ -90,13 +90,13 @@ education:
     degree: B.S. Computer Science
     dates: September 1989 - June 1994
 skills:
-  - Kotlin
-  - Java
   - Python
   - Typescript
+  - Java
   - AWS
   - CDK
   - AI
+  - Langchain
   - FHIR
   - React
 
