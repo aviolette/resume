@@ -4,9 +4,10 @@ EXPERIENCE_PANEL = 2
 
 
 class ResumePDF(FPDF):
-    def __init__(self, file_root: str):
+    def __init__(self, file_root: str, longform: bool = False):
         super().__init__(format="letter")
         self.file_root = file_root
+        self.longform = longform
 
     def basic_bold(self):
         self.set_text_color(0, 0, 0)
@@ -54,19 +55,22 @@ class ResumePDF(FPDF):
         self.header_text(resume["name"])
         self.set_font("Helvetica", "", 9)
         self.set_y(31)
-        self.cell(125, 9, resume["blurb"], align="L")
+        width = 190 if self.longform else 125
+        self.cell(width, 9, resume["blurb"], align="L")
         self.ln()
 
     def add_experience(self, resume):
         self.section_header("Experience")
-        for experience in resume["experience"][0:EXPERIENCE_PANEL]:
+        experience_limit = None if self.longform else EXPERIENCE_PANEL
+        width = 190 if self.longform else 125
+        for experience in resume["experience"][0:experience_limit]:
             self.three_part(
                 experience["company"], experience["location"], experience["title"]
             )
             self.set_y(self.get_y() + 7)
             self.lesser_text()
             self.text_cell(experience["dates"])
-            self.multi_cell(125, 5, experience["description"])
+            self.multi_cell(width, 5, experience["description"])
 
     def add_education(self, resume):
         self.section_header("Education")
@@ -79,6 +83,8 @@ class ResumePDF(FPDF):
             self.text_cell(education["dates"])
 
     def add_additional_experience(self, resume):
+        if self.longform:
+            return  # In longform, all experience is shown in detail
         additional_experience = resume["experience"][EXPERIENCE_PANEL:]
         if not additional_experience:
             return
@@ -94,39 +100,62 @@ class ResumePDF(FPDF):
             self.ln()
 
     def add_contact(self, resume):
-        self.set_left_margin(150)
-        self.set_y(15)
-        self.basic_bold()
-        self.text_cell(resume["phone"], height=5)
-        self.text_cell(resume["email"], height=5)
-        self.text_cell(resume["website"], height=5)
-        self.text_cell(resume["address"], height=5)
+        if self.longform:
+            return  # Don't show contact sidebar in longform
+        if self.page_no() == 1:
+            self.set_left_margin(150)
+            self.set_y(15)
+            self.basic_bold()
+            self.text_cell(resume["phone"], height=5)
+            self.text_cell(resume["email"], height=5)
+            self.text_cell(resume["website"], height=5)
+            self.text_cell(resume["address"], height=5)
+            self.set_left_margin(10)  # Reset margin back
 
     def add_skills(self, resume):
-        self.set_y(45)
-        self.section_header("Skills")
-        self.lesser_text()
-        for skill in resume["skills"]:
-            self.text_cell(skill)
+        if self.longform:
+            # In longform, skills are a full section in main content
+            self.section_header("Skills")
+            self.lesser_text()
+            skills_text = " * ".join(resume["skills"])
+            width = 190
+            self.multi_cell(width, 5, skills_text)
+        elif self.page_no() == 1:
+            # In short form, skills are in the sidebar
+            self.set_left_margin(150)
+            self.set_y(45)
+            self.section_header("Skills")
+            self.lesser_text()
+            for skill in resume["skills"]:
+                self.text_cell(skill)
+            self.set_left_margin(10)  # Reset margin back
 
     def add_projects(self, resume):
-        if not resume.get("projects"):
-            return
-        self.section_header("Projects")
-        for project in resume["projects"]:
-            self.basic_bold()
-            self.text_cell(project["name"])
-            self.lesser_text()
-            self.multi_cell(50, 5, project["description"], align="L")
-            self.ln()
+        if self.longform or not resume.get("projects"):
+            return  # Don't show projects in longform
+        if self.page_no() == 1:
+            self.set_left_margin(150)
+            self.section_header("Projects")
+            for project in resume["projects"]:
+                self.basic_bold()
+                self.text_cell(project["name"])
+                self.lesser_text()
+                self.multi_cell(50, 5, project["description"], align="L")
+                self.ln()
+            self.set_left_margin(10)  # Reset margin back
 
     def write_file(self, resume):
         self.add_page()
         self.add_header(resume)
         self.add_experience(resume)
         self.add_additional_experience(resume)
-        self.add_education(resume)
-        self.add_contact(resume)
-        self.add_skills(resume)
-        self.add_projects(resume)
-        self.output(f"{self.file_root}.pdf")
+        if self.longform:
+            self.add_education(resume)
+            self.add_skills(resume)
+        else:
+            self.add_education(resume)
+            self.add_contact(resume)
+            self.add_skills(resume)
+            self.add_projects(resume)
+        suffix = "-longform" if self.longform else ""
+        self.output(f"{self.file_root}{suffix}.pdf")
