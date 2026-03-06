@@ -1,0 +1,10 @@
+[project]
+name = "resume"
+version = "0.1.0"
+description = "Resume generator"
+requires-python = ">=3.13"
+dependencies = [
+    "fpdf",
+    "pyyaml",
+    "python-docx",
+]
