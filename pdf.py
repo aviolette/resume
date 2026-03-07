@@ -20,9 +20,9 @@ class ResumePDF(FPDF):
         self.set_font("Helvetica", "B", 36)
         self.cell(125, 31, text, align="L")
 
-    def lesser_text(self):
+    def lesser_text(self, size=9):
         self.set_text_color(100, 100, 100)
-        self.set_font("Helvetica", "", 9)
+        self.set_font("Helvetica", "", size)
 
     def section_header(self, value):
         self.ln()
@@ -68,9 +68,11 @@ class ResumePDF(FPDF):
                 experience["company"], experience["location"], experience["title"]
             )
             self.set_y(self.get_y() + 7)
-            self.lesser_text()
+            body_size = 11 if self.longform else 9
+            self.lesser_text(body_size)
             self.text_cell(experience["dates"])
-            self.multi_cell(width, 5, experience["description"])
+            line_height = 6 if self.longform else 5
+            self.multi_cell(width, line_height, experience["description"])
 
     def add_education(self, resume):
         self.section_header("Education")
@@ -116,10 +118,10 @@ class ResumePDF(FPDF):
         if self.longform:
             # In longform, skills are a full section in main content
             self.section_header("Skills")
-            self.lesser_text()
+            self.lesser_text(11)
             skills_text = " * ".join(resume["skills"])
             width = 190
-            self.multi_cell(width, 5, skills_text)
+            self.multi_cell(width, 6, skills_text)
         elif self.page_no() == 1:
             # In short form, skills are in the sidebar
             self.set_left_margin(150)
