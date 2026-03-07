@@ -102,11 +102,9 @@ class ResumePDF(FPDF):
             self.ln()
 
     def add_contact(self, resume):
-        if self.longform:
-            return  # Don't show contact sidebar in longform
         if self.page_no() == 1:
             self.set_left_margin(150)
-            self.set_y(15)
+            self.set_y(20)
             self.basic_bold()
             self.text_cell(resume["phone"], height=5)
             self.text_cell(resume["email"], height=5)
@@ -149,6 +147,7 @@ class ResumePDF(FPDF):
     def write_file(self, resume):
         self.add_page()
         self.add_header(resume)
+        self.add_contact(resume)
         self.add_experience(resume)
         self.add_additional_experience(resume)
         if self.longform:
@@ -156,7 +155,6 @@ class ResumePDF(FPDF):
             self.add_skills(resume)
         else:
             self.add_education(resume)
-            self.add_contact(resume)
             self.add_skills(resume)
             self.add_projects(resume)
         suffix = "-longform" if self.longform else ""
