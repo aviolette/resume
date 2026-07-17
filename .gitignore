@@ -1,6 +1,9 @@
 venv
+.venv
+.junie
+.claude
+
 .idea
-resume.pdf
 __pycache__
 
-AJVResume*
+*.pdf

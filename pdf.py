@@ -1,4 +1,5 @@
 from fpdf import FPDF
+from fpdf.enums import XPos, YPos
 
 EXPERIENCE_PANEL = 2
 
@@ -8,21 +9,25 @@ class ResumePDF(FPDF):
         super().__init__(format="letter")
         self.file_root = file_root
         self.longform = longform
+        # Add DejaVu Sans font which supports Unicode
+        self.add_font("DejaVu", "", "fonts/DejaVuSans.ttf", uni=True)
+        self.add_font("DejaVu", "B", "fonts/DejaVuSans-Bold.ttf", uni=True)
+        self.add_font("DejaVu", "I", "fonts/DejaVuSans-Oblique.ttf", uni=True)
 
     def basic_bold(self):
         self.set_text_color(0, 0, 0)
-        self.set_font("Helvetica", "B", 9)
+        self.set_font("DejaVu", "B", 9)
 
     def title_emphasis(self, style=""):
-        self.set_font("Helvetica", style, 12)
+        self.set_font("DejaVu", style, 12)
 
     def header_text(self, text):
-        self.set_font("Helvetica", "B", 36)
+        self.set_font("DejaVu", "B", 36)
         self.cell(125, 31, text, align="L")
 
     def lesser_text(self, size=9):
         self.set_text_color(100, 100, 100)
-        self.set_font("Helvetica", "", size)
+        self.set_font("DejaVu", "", size)
 
     def section_header(self, value):
         self.ln()
@@ -51,6 +56,40 @@ class ResumePDF(FPDF):
         if lf:
             self.ln()
 
+    def render_description(self, description, width, line_height):
+        """Render description text, handling markdown-style bullet lists."""
+        # Split by ' * ' pattern (YAML > folding creates space-separated bullets)
+        # Also handle newline-separated bullets
+        if ' * ' in description or description.strip().startswith('* '):
+            # Split on bullet markers, handling both patterns
+            parts = description.split(' * ')
+            bullets = []
+
+            # First part might be empty or have leading bullet
+            first = parts[0].strip()
+            if first.startswith('* '):
+                bullets.append(first[2:].strip())
+            elif first:
+                bullets.append(first)
+
+            # Rest of the parts are bullets
+            for part in parts[1:]:
+                if part.strip():
+                    bullets.append(part.strip())
+
+            # Render each bullet
+            x_pos = self.get_x()
+            for bullet in bullets:
+                if bullet:
+                    # Use proper Unicode bullet character (•)
+                    self.cell(3, line_height, '•')
+                    self.set_x(x_pos + 5)
+                    self.multi_cell(width - 5, line_height, bullet)
+                    self.set_x(x_pos)
+        else:
+            # No bullets, render as normal
+            self.multi_cell(width, line_height, description)
+
     def add_header(self, resume):
         self.header_text(resume["name"])
         self.set_font("Helvetica", "", 9)
@@ -58,6 +97,13 @@ class ResumePDF(FPDF):
         width = 190 if self.longform else 125
         self.cell(width, 9, resume["blurb"], align="L")
         self.ln()
+
+    def add_professional_summary(self, resume):
+        if not self.longform or "extended_blurb" not in resume:
+            return
+        self.section_header("Professional Summary")
+        self.lesser_text(11)
+        self.multi_cell(190, 6, resume["extended_blurb"])
 
     def add_experience(self, resume):
         self.section_header("Experience")
@@ -72,7 +118,7 @@ class ResumePDF(FPDF):
             self.lesser_text(body_size)
             self.text_cell(experience["dates"])
             line_height = 6 if self.longform else 5
-            self.multi_cell(width, line_height, experience["description"])
+            self.render_description(experience["description"], width, line_height)
 
     def add_education(self, resume):
         self.section_header("Education")
@@ -117,7 +163,7 @@ class ResumePDF(FPDF):
             # In longform, skills are a full section in main content
             self.section_header("Skills")
             self.lesser_text(11)
-            skills_text = " * ".join(resume["skills"])
+            skills_text = " • ".join(resume["skills"])
             width = 190
             self.multi_cell(width, 6, skills_text)
         elif self.page_no() == 1:
@@ -148,6 +194,7 @@ class ResumePDF(FPDF):
         self.add_page()
         self.add_header(resume)
         self.add_contact(resume)
+        self.add_professional_summary(resume)
         self.add_experience(resume)
         self.add_additional_experience(resume)
         if self.longform:

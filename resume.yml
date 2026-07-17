@@ -5,81 +5,104 @@ address: Noblesville, IN
 website: www.andrewviolette.net
 blurb: Seasoned Programmer and Manager
 extended_blurb: >
-  I am an experienced programmer with over 30 years of experience in software engineering and 
-  management.  My strengths are building distributed systems in Java and Python.  I have a swath of 
-  experience in various database systems and eventing and streaming services.  I have a decent familiarity with 
-  front-end, primarily using React.
+  Accomplished Software Engineering Leader with over 30 years of experience architecting and delivering complex, scalable systems. Deep expertise in AI/LLM platforms, AWS cloud-native architectures, healthcare interoperability (HL7 FHIR), and leading high-performing engineering teams. Proven ability to take products from concept to production in oncology decision support, clinical trials, learning platforms, and enterprise software.
 experience:
   - company: Spiraldot Health
     location: Los Angeles, CA (remote)
     title: Founding Engineer
     dates: January 2023 - Present
-    description: Founding engineer responsible for architecture and implementation of an AI-based decision support system for oncology.  In this capacity, I use the AWS cloud stack, LLM technology, and industry-standard healthcare interchange formats such as HL7 FHIR.  The tech stack is an event-driven microservice architecture leveraging python/langchain-based services in AWS and a Typescript/React front-end.
-  - company: Nashville Food Project
-    location: Nashville, TN
-    title: Volunteer
-    dates: March 2022 - September 2024
-    description: The Nashville Food Project is a non-profit organization which provides meals for the community with food that is recovered or grown locally at their farms.  I volunteered once a month doing meal prep.
+    description: >
+      * Architected and implemented an AI-powered clinical decision support system for oncology using AWS, LangChain, and LLMs with HL7 FHIR interoperability standards.  
+      * Designed an event-driven microservices architecture with Python-based backend services and a TypeScript/React frontend, enabling scalable and secure real-time insights.  
+      * Established core engineering practices, infrastructure patterns, and technical direction as the first technical hire in a fast-moving startup environment.
+#  - company: Nashville Food Project
+#    location: Nashville, TN
+#    title: Volunteer
+#    dates: March 2022 - September 2024
+#    description: The Nashville Food Project is a non-profit organization which provides meals for the community with food that is recovered or grown locally at their farms.  I volunteered once a month doing meal prep.
   - company: Honor Education
     location: San Francisco, CA
     title: Engineering Manager
     dates: Jan 2023 - Sep 2024
-    description: Platform architect and team lead for a Learning Management System (LMS).  Architected and built customer integrations using AWS technologies (Lambda, DynamoDB, Cognito, API Gateway). Researched AI-based learning solutions. Developed and implemented observability and monitoring framework (primarily using DataDog). Primary development technologies were Java, Python, and AWS.
+    description: >
+      * Served as platform architect and engineering team lead for a Learning Management System (LMS), driving technical strategy and customer integrations.  
+      * Built and maintained customer integrations using AWS services including Lambda, DynamoDB, Cognito, and API Gateway.  
+      * Researched and prototyped AI-based learning solutions to enhance platform capabilities.  
+      * Designed and rolled out a comprehensive observability and monitoring framework using DataDog, significantly improving system reliability and incident response.
   - company: Deep6 AI
     location: Pasadena, CA
     title: Senior Staff Engineer
     dates: October 2021 - January 2023
-    description: Architected solutions for a clinical trial SaaS product that was deployed in AWS.  Responsibilities included software architecture, coaching, code-reviews, coding (in Typescript, Python, and Kotlin), and managing deployment pipelines (using CDK and some terraform).
+    description: >
+      * Architected and delivered solutions for a clinical trial SaaS platform deployed on AWS.  
+      * Led technical direction through architecture reviews, code reviews, and hands-on development in TypeScript, Python, and Kotlin.  
+      * Managed infrastructure and deployment pipelines using AWS CDK and Terraform while mentoring engineers.
   - company: Fast Radius
     location: Chicago, IL
     title: Director of Engineering
     dates: April 2021 - October 2021
-    description: Responsible for the engineering teams, architecture, and development of the Product Studio product.
+    description: >
+      * Led engineering teams responsible for architecture, development, and delivery of the Product Studio platform.  
+      * Drove technical strategy and operational excellence across the engineering organization.
   - company: divvyDOSE
     location: Chicago, IL
     title: Senior Engineering Manager
     dates: February 2019 - April 2021
-    description: Managed the "Bill and Fill" team, which was responsible for processing insurance and credit card payments, invoicing, and the robotics involved in filling prescriptions. I did everything from architecture, coaching, code-reviews, hiring, operational management, and coding.  Code was written in python on AWS serverless technologies.
+    description: >
+      * Managed the "Bill and Fill" engineering team responsible for insurance/credit card payment processing, invoicing, and robotic prescription fulfillment systems.
+      * Oversaw full lifecycle responsibilities including architecture, team leadership, hiring, coaching, code reviews, and operational management.
+      * Built solutions on Python and AWS serverless technologies.
   - company: Digital Fleet
     location: Chicago, IL
     title: Principal Engineer
     dates: September 2018 - February 2019
-    description: DigitalFleet provides real-time logistics for the ready-mix concrete industry. I was involved in doing full stack development in C# for web services that were built on the .NET platform. I spent an equal amount of time doing Android development in Java for Digital Fleet's tablet application.
+    description: >
+      * Delivered full-stack development for real-time logistics platform serving the ready-mix concrete industry using C# and .NET.  
+      * Developed and maintained Android tablet application in Java.
   - company: Signal
     location: Chicago, IL
     title: Senior Development Manager
-    description: One of the original programmers at Signal (né BrightTag) where I was involved in writing many of Signal's core services, which were primarily written in Java, Ruby, and Python. I was manager of the Data Engineering Team for the last 2 years I was there.
+    description: >
+      * One of the original engineers; contributed to core platform services built in Java, Ruby, and Python.  
+      * Managed the Data Engineering team for the final two years, overseeing architecture, hiring, and delivery of data infrastructure.
     dates: May 2010 - August 2018
   - company: Rearden Commerce
     location: Foster City, CA
     title: Principal Engineer
     dates: Jan 2008 - May 2010
-    description: Lead travel related projects.  Most programming done in Java/J2EE technologies.
+    description: >
+      * Led development of travel-related projects using Java/J2EE technologies.
   - company: Orbitz
     location: Chicago, IL
     title: Technical Manager
     dates: Jun 2001 - Dec 2007
-    description: From 2001-2004, I was a Senior Engineer assigned to various travel verticals within Orbitz (now part of Expedia). These were primarily Java projects.  From 2004-2007 I was the engineering manager in charge of the Northwest Airlines Reservation site (which was a white-labeled version of Orbitz).  For the latter half of 2007, I was a tech lead on the UI Team.
+    description: >
+      * Served as Senior Engineer on multiple travel verticals (primarily Java).  
+      * Later managed engineering for the Northwest Airlines white-labeled reservation site and acted as Tech Lead for the UI team.
   - company: Accenture
     location: Northbrook, IL
     title: Senior Software Engineer
     dates: July 1996 - Jun 2001
-    description: For the first couple of years I was working on a UI generation tool that was leveraged by consultants in the field.  This was primarily written in C++.  The last few years I was involved in a documentation generation tool that was primarily written in Java.
+    description: >
+      * Developed a UI generation tool used by field consultants (primarily C++).  
+      * Built a documentation generation tool in Java.
   - company: Hewitt Associates
     location: Lincolnshire, IL
     title: Software Engineer
     dates: Jun 1995 - Jun 1996
-    description: "Developed Smalltalk applications that supported benefits administration"
+    description: >
+      * Developed Smalltalk applications that supported benefits administration
   - company: IBM
     location: Boca Raton, FL
     title: Software Engineer
     dates: Jun 1994 - Jun 1995
-    description: "Developed portions of the OS/2 operating system in C"
+    description: > 
+      * Developed portions of the OS/2 operating system in C
   - company: NSA
     location: Fort Meade, MD
     title: Programmer
     dates: Jun 1990 - August 1992
-    description: "Nothing to see here"
+    description: Nothing to see here
 education:
   - school: DePaul University
     location: Chicago, IL
