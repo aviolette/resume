@@ -1,5 +1,4 @@
 from fpdf import FPDF
-from fpdf.enums import XPos, YPos
 
 EXPERIENCE_PANEL = 2
 
