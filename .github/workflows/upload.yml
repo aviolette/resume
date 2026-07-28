@@ -48,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "./AJVResume-${{ steps.date.outputs.time }}-one-pager.pdf"
-          asset_name: "AJVResume-${{ steps.date.outputs.time }}-one-pager.pdf"
+          asset_path: "./AndrewVioletteResume-${{ steps.date.outputs.time }}-one-pager.pdf"
+          asset_name: "AndrewVioletteResume-${{ steps.date.outputs.time }}-one-pager.pdf"
           asset_content_type: application/pdf
       - name: Upload PDF Resume (Long Form)
         id: upload-release-asset-longform
@@ -58,6 +58,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "./AJVResume-${{ steps.date.outputs.time }}.pdf"
-          asset_name: "AJVResume-${{ steps.date.outputs.time }}.pdf"
+          asset_path: "./AndrewVioletteResume-${{ steps.date.outputs.time }}.pdf"
+          asset_name: "AndrewVioletteResume-${{ steps.date.outputs.time }}.pdf"
           asset_content_type: application/pdf
