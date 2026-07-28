@@ -4,10 +4,9 @@ EXPERIENCE_PANEL = 2
 
 
 class ResumePDF(FPDF):
-    def __init__(self, file_root: str, longform: bool = False):
+    def __init__(self, file_root: str):
         super().__init__(format="letter")
         self.file_root = file_root
-        self.longform = longform
         # Add DejaVu Sans font which supports Unicode
         self.add_font("DejaVu", "", "fonts/DejaVuSans.ttf", uni=True)
         self.add_font("DejaVu", "B", "fonts/DejaVuSans-Bold.ttf", uni=True)
@@ -56,10 +55,10 @@ class ResumePDF(FPDF):
             self.ln()
 
     def render_description(self, description, width, line_height):
-        """Render description text, handling markdown-style bullet lists."""
-        # Split by ' * ' pattern (YAML > folding creates space-separated bullets)
-        # Also handle newline-separated bullets
-        if ' * ' in description or description.strip().startswith('* '):
+        """Render description text, handling list of strings or markdown-style bullet lists."""
+        if isinstance(description, list):
+            bullets = description
+        elif ' * ' in description or description.strip().startswith('* '):
             # Split on bullet markers, handling both patterns
             parts = description.split(' * ')
             bullets = []
@@ -75,30 +74,31 @@ class ResumePDF(FPDF):
             for part in parts[1:]:
                 if part.strip():
                     bullets.append(part.strip())
-
-            # Render each bullet
-            x_pos = self.get_x()
-            for bullet in bullets:
-                if bullet:
-                    # Use proper Unicode bullet character (•)
-                    self.cell(3, line_height, '•')
-                    self.set_x(x_pos + 5)
-                    self.multi_cell(width - 5, line_height, bullet)
-                    self.set_x(x_pos)
         else:
             # No bullets, render as normal
             self.multi_cell(width, line_height, description)
+            return
+
+        # Render each bullet
+        x_pos = self.get_x()
+        for bullet in bullets:
+            if bullet:
+                # Use proper Unicode bullet character (•)
+                self.cell(3, line_height, '•')
+                self.set_x(x_pos + 5)
+                self.multi_cell(width - 5, line_height, bullet)
+                self.set_x(x_pos)
 
     def add_header(self, resume):
         self.header_text(resume["name"])
         self.set_font("Helvetica", "", 9)
         self.set_y(31)
-        width = 190 if self.longform else 125
+        width = 190
         self.cell(width, 9, resume["blurb"], align="L")
         self.ln()
 
     def add_professional_summary(self, resume):
-        if not self.longform or "extended_blurb" not in resume:
+        if "extended_blurb" not in resume:
             return
         self.section_header("Professional Summary")
         self.lesser_text(11)
@@ -106,17 +106,16 @@ class ResumePDF(FPDF):
 
     def add_experience(self, resume):
         self.section_header("Experience")
-        experience_limit = None if self.longform else EXPERIENCE_PANEL
-        width = 190 if self.longform else 125
-        for experience in resume["experience"][0:experience_limit]:
+        width = 190
+        for experience in resume["experience"]:
             self.three_part(
                 experience["company"], experience["location"], experience["title"]
             )
             self.set_y(self.get_y() + 7)
-            body_size = 11 if self.longform else 9
+            body_size = 11
             self.lesser_text(body_size)
             self.text_cell(experience["dates"])
-            line_height = 6 if self.longform else 5
+            line_height = 6
             self.render_description(experience["description"], width, line_height)
 
     def add_education(self, resume):
@@ -128,23 +127,6 @@ class ResumePDF(FPDF):
             self.set_y(self.get_y() + 7)
             self.lesser_text()
             self.text_cell(education["dates"])
-
-    def add_additional_experience(self, resume):
-        if self.longform:
-            return  # In longform, all experience is shown in detail
-        additional_experience = resume["experience"][EXPERIENCE_PANEL:]
-        if not additional_experience:
-            return
-        self.section_header("Additional Work Experience")
-        for experience in additional_experience:
-            self.basic_bold()
-            cell_width = self.get_string_width(experience["company"])
-            self.cell(cell_width, 5, experience["company"])
-            self.lesser_text()
-            right = f" - {experience['location']} - {experience['title']} - {experience['dates']}"
-            cell_width = self.get_string_width(right)
-            self.cell(cell_width, 5, right)
-            self.ln()
 
     def add_contact(self, resume):
         if self.page_no() == 1:
@@ -158,36 +140,12 @@ class ResumePDF(FPDF):
             self.set_left_margin(10)  # Reset margin back
 
     def add_skills(self, resume):
-        if self.longform:
-            # In longform, skills are a full section in main content
-            self.section_header("Skills")
-            self.lesser_text(11)
-            skills_text = " • ".join(resume["skills"])
-            width = 190
-            self.multi_cell(width, 6, skills_text)
-        elif self.page_no() == 1:
-            # In short form, skills are in the sidebar
-            self.set_left_margin(150)
-            self.set_y(45)
-            self.section_header("Skills")
-            self.lesser_text()
-            for skill in resume["skills"]:
-                self.text_cell(skill)
-            self.set_left_margin(10)  # Reset margin back
+        self.section_header("Skills")
+        self.lesser_text(11)
+        self.render_description(resume["skills"], 190, 6)
 
     def add_projects(self, resume):
-        if self.longform or not resume.get("projects"):
-            return  # Don't show projects in longform
-        if self.page_no() == 1:
-            self.set_left_margin(150)
-            self.section_header("Projects")
-            for project in resume["projects"]:
-                self.basic_bold()
-                self.text_cell(project["name"])
-                self.lesser_text()
-                self.multi_cell(50, 5, project["description"], align="L")
-                self.ln()
-            self.set_left_margin(10)  # Reset margin back
+        pass # Projects are not supported in this version
 
     def write_file(self, resume):
         self.add_page()
@@ -195,13 +153,6 @@ class ResumePDF(FPDF):
         self.add_contact(resume)
         self.add_professional_summary(resume)
         self.add_experience(resume)
-        self.add_additional_experience(resume)
-        if self.longform:
-            self.add_education(resume)
-            self.add_skills(resume)
-        else:
-            self.add_education(resume)
-            self.add_skills(resume)
-            self.add_projects(resume)
-        suffix = "-one-pager" if not self.longform else ""
-        self.output(f"{self.file_root}{suffix}.pdf")
+        self.add_education(resume)
+        self.add_skills(resume)
+        self.output(f"{self.file_root}.pdf")

@@ -41,18 +41,18 @@ jobs:
             ${{ github.event.head_commit.message }}
           draft: false
           prerelease: false
-      - name: Upload PDF Resume
-        id: upload-release-asset
+      - name: Upload Markdown Resume
+        id: upload-release-asset-markdown
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "./AndrewVioletteResume-${{ steps.date.outputs.time }}-one-pager.pdf"
-          asset_name: "AndrewVioletteResume-${{ steps.date.outputs.time }}-one-pager.pdf"
-          asset_content_type: application/pdf
-      - name: Upload PDF Resume (Long Form)
-        id: upload-release-asset-longform
+          asset_path: "./AndrewVioletteResume-${{ steps.date.outputs.time }}.md"
+          asset_name: "AndrewVioletteResume-${{ steps.date.outputs.time }}.md"
+          asset_content_type: text/markdown
+      - name: Upload PDF Resume
+        id: upload-release-asset-pdf
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
