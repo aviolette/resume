@@ -49,9 +49,9 @@ experience:
     title: Senior Engineering Manager
     dates: February 2019 - April 2021
     description: >
-      * Managed the "Bill and Fill" engineering team responsible for insurance/credit card payment processing, invoicing, and robotic prescription fulfillment systems.
+      * Managed the Bill and Fill engineering team responsible for insurance and credit card payment processing, invoicing, and robotic prescription fulfillment systems.
       * Oversaw full lifecycle responsibilities including architecture, team leadership, hiring, coaching, code reviews, and operational management.
-      * Built solutions on Python and AWS serverless technologies.
+      * Built solutions in Python and AWS serverless technologies.
   - company: Digital Fleet
     location: Chicago, IL
     title: Principal Engineer
@@ -122,6 +122,7 @@ skills:
   - Langchain
   - FHIR
   - React
+  - Datadog
 
 projects:
   - name: Chicago Farmers' Market Finder
