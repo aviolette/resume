@@ -203,5 +203,5 @@ class ResumePDF(FPDF):
             self.add_education(resume)
             self.add_skills(resume)
             self.add_projects(resume)
-        suffix = "-longform" if self.longform else ""
+        suffix = "-one-pager" if not self.longform else ""
         self.output(f"{self.file_root}{suffix}.pdf")

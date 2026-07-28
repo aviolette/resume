@@ -22,7 +22,7 @@ jobs:
           format: 'YYYY-MM-DD'
       - name: Build Resume
         run: |
-          uv run python main.py AJVResume-${{ steps.date.outputs.time }}
+          uv run python main.py AndrewVioletteResume-${{ steps.date.outputs.time }}
       - name: Get Time
         id: time
         uses: nanzm/get-time-action@v1.1
